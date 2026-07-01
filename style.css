@@ -1,0 +1,154 @@
+/* Health Self-Check Kiosk — style.css
+   Palette: white background, light-blue accents.
+   Layout: CSS Grid for the form fields, Flexbox for stacking sections,
+   one mobile-first breakpoint for responsiveness. */
+
+:root {
+  --blue: #4FA8D8;
+  --blue-dark: #2E86AB;
+  --blue-light: #EAF6FC;
+  --border: #D7E7F0;
+  --text: #2B2B2B;
+  --text-light: #6B7280;
+  --white: #FFFFFF;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background-color: var(--white);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+header {
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 .25rem;
+  font-size: 1.4rem;
+  letter-spacing: .01em;
+}
+
+header p {
+  margin: 0;
+  font-weight: 300;
+  opacity: .95;
+}
+
+main {
+  max-width: 480px;
+  margin: -1rem auto 2rem;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-card,
+.result-card,
+.history-card {
+  background-color: var(--white);
+  border: 1px solid var(--blue-light);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+  padding: 1.1rem;
+}
+
+/* Form fields: Grid handles the responsive 1-col / 2-col layout,
+   Flexbox (inside .field) stacks each label above its input. */
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+
+.field.full { grid-column: 1 / -1; }
+
+label {
+  font-weight: 600;
+  font-size: .9rem;
+}
+
+input, select {
+  padding: .65rem .75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--blue-light);
+  color: var(--text);
+}
+
+input:focus, select:focus {
+  outline: 2px solid var(--blue);
+  outline-offset: 1px;
+}
+
+button {
+  width: 100%;
+  padding: .8rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--blue);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover { background-color: var(--blue-dark); }
+
+.error {
+  color: #C0392B;
+  background-color: #FDEDEC;
+  padding: .6rem .75rem;
+  border-radius: 8px;
+  font-size: .9rem;
+  margin: 0 0 1rem;
+}
+
+/* Result card background color is set inline per BMI category (switch-case) */
+.result-card { text-align: center; color: #1B1B1B; }
+.result-card h2 { margin-top: 0; font-size: 1.15rem; }
+.result-card p { margin: .3rem 0; }
+
+.history-card h2 { margin-top: 0; font-size: 1.05rem; color: var(--blue-dark); }
+#historyList { list-style: none; padding: 0; margin: 0; }
+#historyList li {
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--blue-light);
+  font-size: .9rem;
+}
+#historyList li:last-child { border-bottom: none; }
+#historyList li.empty { color: var(--text-light); font-style: italic; }
+
+.hidden { display: none; }
+
+footer {
+  text-align: center;
+  color: var(--text-light);
+  font-size: .8rem;
+  padding: 1rem;
+}
+
+/* Single responsive breakpoint: 2-column form fields once there's room */
+@media (min-width: 480px) {
+  header { padding: 2rem 1rem; }
+  header h1 { font-size: 1.75rem; }
+  .form-card, .result-card, .history-card { padding: 1.5rem; }
+  .field-grid { grid-template-columns: 1fr 1fr; }
+}
