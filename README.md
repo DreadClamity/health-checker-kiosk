@@ -21,7 +21,7 @@ Students and employees often have no quick, private way to check their BMI witho
 2. To enable Google Sheet logging, deploy the Apps Script Web App and paste the deployment URL into the `WEB_APP_URL` constant at the top of `script.js`.
 
 ## Live Demo
-[Add your GitHub Pages link here once deployed]
+https://dreadclamity.github.io/health-checker-kiosk/
 
 ## Author
 Kyle — BIT31, De La Salle University – Dasmariñas
